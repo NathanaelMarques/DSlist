@@ -2,10 +2,7 @@ package com.aulaodevsuperior.nathan.dslist.entities;
 
 import jakarta.persistence.*;
 import jakarta.websocket.Encoder;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Objects;
 
@@ -14,6 +11,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@EqualsAndHashCode(of = {"id"})
 @Table(name = "tb_game")
 public class Game {
     @Id
@@ -33,7 +31,7 @@ public class Game {
     private String longDescription;
 
 
-    @Override
+   /* @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -46,5 +44,5 @@ public class Game {
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
-    }
+    }*/
 }

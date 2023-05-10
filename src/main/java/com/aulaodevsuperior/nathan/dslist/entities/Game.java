@@ -26,23 +26,7 @@ public class Game {
     private String imgUrl;
     @Column(columnDefinition = "TEXT")
     private String shortDescription;
-    //@Lob
     @Column(columnDefinition = "TEXT")
     private String longDescription;
 
-
-   /* @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Game game = (Game) o;
-
-        return Objects.equals(id, game.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }*/
 }

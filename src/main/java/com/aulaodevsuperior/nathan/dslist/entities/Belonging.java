@@ -3,6 +3,7 @@ package com.aulaodevsuperior.nathan.dslist.entities;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,12 +15,12 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode(of = {"id"})
 public class Belonging {
 
     @EmbeddedId
     private BelongingPK id = new BelongingPK();
     private Integer position;
-
 
     public Belonging(Game game,
                      GameList gameList,
@@ -27,21 +28,5 @@ public class Belonging {
         id.setGame(game);
         id.setGameList(gameList);
         this.position = position;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Belonging belonging = (Belonging) o;
-
-        return Objects.equals(id, belonging.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
     }
 }

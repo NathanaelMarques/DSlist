@@ -1,6 +1,7 @@
 package com.aulaodevsuperior.nathan.dslist.entities;
 
 import jakarta.persistence.*;
+import jakarta.websocket.Encoder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,9 +23,13 @@ public class Game {
     @Column(name = "game_year")
     private Integer year;
     private String genre;
-    private String platform;
+    private String platforms;
+    private Double score;
     private String imgUrl;
+    @Column(columnDefinition = "TEXT")
     private String shortDescription;
+    //@Lob
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
 

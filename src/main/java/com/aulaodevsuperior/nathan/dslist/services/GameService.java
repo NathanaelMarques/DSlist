@@ -2,6 +2,7 @@ package com.aulaodevsuperior.nathan.dslist.services;
 
 import com.aulaodevsuperior.nathan.dslist.dto.GameDTO;
 import com.aulaodevsuperior.nathan.dslist.dto.GameMinDTO;
+import com.aulaodevsuperior.nathan.dslist.entities.Game;
 import com.aulaodevsuperior.nathan.dslist.projections.GameMinProjection;
 import com.aulaodevsuperior.nathan.dslist.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GameService {
@@ -22,8 +24,8 @@ public class GameService {
     }
     @Transactional(readOnly = true)
     public GameDTO findById(Long id){
-        var result = gameRepository.findById(id).get();
-        return new GameDTO(result);
+        Optional<Game> obj = gameRepository.findById(id);
+        return obj.map(x -> new GameDTO(x)).orElseThrow(() -> new ResourceNotFoundException(id));
     }
     @Transactional(readOnly = true)
     public List<GameMinDTO> findByList(Long listId){
